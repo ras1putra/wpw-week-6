@@ -19,10 +19,7 @@
                     <div class="p-4 text-center text-xl font-bold mt-6 text-black">
                         Tambah Pekerja Baru
                     </div>
-                    <div class="mx-4 p-4 flex justify-between font-bold items-center">
-                        <label>Nama Lengkap</label>
-                        <input type="text" placeholder="Nama Lengkap" class="w-3/4 px-4 py-2">
-                    </div>
+                    <input-component type="text" v-model="pegawai.nama" label="Nama Lengkap" placeholder="Nama Lengkap Anda"></input-component>
                     <div class="mx-4 p-4 flex justify-between font-bold items-center">
                         <label>Jenis Kelamin</label>
                         <div class="w-3/4 space-x-2">
@@ -32,10 +29,7 @@
                             <label for="per">Perempuan</label>
                         </div>
                     </div>
-                    <div class="mx-4 p-4 flex justify-between font-bold items-center">
-                        <label for="umur">Umur</label>
-                        <input type="number" name="umur" placeholder="Umur" class="w-3/4 px-4 py-2">
-                    </div>
+                    <input-component type="number" v-model="pegawai.umur" label="Umur" placeholder="Umur Anda"></input-component>
                     <div class="mx-4 p-4 flex justify-between font-bold items-center">
                         <label for="posisi">Posisi</label>
                         <div class="w-3/4">
@@ -93,10 +87,22 @@
     </div>
 </template>
 <script>
+import InputComponent from './InputComponent.vue'
+
 export default {
+    components: {
+            InputComponent
+    },
     data() {
         return {
             show: false,
+            pegawai: {
+                nama: "",
+                kelamin: "",
+                umur: "",
+                posisi: "",
+                entry: ""
+            }
         };
     },
     methods: {
