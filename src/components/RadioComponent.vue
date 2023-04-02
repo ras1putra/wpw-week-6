@@ -1,11 +1,7 @@
 <template>
     <div class="flex flex-row">
-        <input :id="label" type="radio" class="mx-2" :value="label" :checked="modelValue == label"
-            @change="$emit('update:modelValue', $event.target.value)" v-bind="$attrs" :class="{ 'is-invalid': getError }">
+        <input :id="label" type="radio" class="mx-2" :value="label" :checked="modelValue == label" @change="$emit('update:modelValue', $event.target.value)" v-bind="$attrs">
         <label :for="label">{{ label }}</label>
-        <div class="mx-6 px-4 transform translate-y-[28px] translate-x-[-165px] absolute text-[12px] text-red-500 z-105 ml-[25%]"
-            v-if="getError()">{{ getError() }}
-        </div>
     </div>
 </template>
 <script>
@@ -24,19 +20,6 @@ export default {
             type: [String, Number],
             required: true,
         },
-        error: {
-            type: [Array, String],
-            default: null,
-        }
-    },
-    methods: {
-        getError() {
-            if (!this.modelValue) {
-                return Array.isArray(this.error) ? this.error.join(", ") : this.error;
-            }
-            return false;
-        },
     },
 };
 </script>
-  
