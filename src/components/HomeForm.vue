@@ -21,20 +21,17 @@
                     </div>
                     <input-component type="text" v-model="pegawai.nama" label="Nama Lengkap" placeholder="Nama Lengkap Anda"></input-component>
                     <div class="mx-4 p-4 flex justify-between font-bold items-center">
-                        <label>Jenis Kelamin</label>
-                        <div class="w-3/4 space-x-2">
-                            <input type="radio" id="laki">
-                            <label for="laki">Laki-laki</label>
-                            <input type="radio" id="per">
-                            <label for="per">Perempuan</label>
+                        <div class="w-1/4">
+                            Jenis Kelamin
                         </div>
-                    </div>
+                        <div class="w-3/4 flex flex-row">
+                            <radio-component label="Laki-laki" :value="1" v-model="pegawai.kelamin"></radio-component>
+                            <radio-component label="Perempuan" :value="0" v-model="pegawai.kelamin"></radio-component>
+                        </div>
+                    </div>    
                     <input-component type="number" v-model="pegawai.umur" label="Umur" placeholder="Umur Anda"></input-component>
                     <select-component label="Posisi" v-model="pegawai.posisi" :options="lowongan" placeholder="Pilih Posisi Yang Dilamar"></select-component>
-                    <div class="mx-4 p-4 flex justify-between font-bold items-center">
-                        <label for="date">Tanggal Masuk</label>
-                        <input type="date" name="date" class="w-3/4 px-4 py-2">
-                    </div>
+                    <input-component type="date" v-model="pegawai.entry" label="Tanggal Masuk"></input-component>
                     <div class="flex mx-8 p-4 items-center space-x-6 font-bold justify-end mt-6">
                         <button class="bg-green-600 px-4 py-2 text-white rounded-md" type="submit">
                             Simpan
@@ -79,11 +76,13 @@
 <script>
 import InputComponent from './InputComponent.vue'
 import SelectComponent from './SelectComponent.vue'
+import RadioComponent from './RadioComponent.vue'
 
 export default {
     components: {
             InputComponent,
-            SelectComponent
+            SelectComponent,
+            RadioComponent
     },
     data() {
         return {
