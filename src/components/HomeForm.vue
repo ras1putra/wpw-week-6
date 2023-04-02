@@ -13,26 +13,31 @@
                     Pekerja Baru
                 </button>
             </div>
-            <form>
+            <form @submit.prevent="add">
                 <div v-show="show"
                     class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-100 bg-gray-200 w-[600px] text-slate-600 rounded-xl shadow-xl">
                     <div class="p-4 text-center text-xl font-bold mt-4 text-black">
                         Tambah Pekerja Baru
                     </div>
-                    <input-component type="text" v-model="pegawai.nama" label="Nama Lengkap" placeholder="Nama Lengkap Anda"></input-component>
+                    <input-component type="text" v-model="pegawai.nama" label="Nama Lengkap" placeholder="Nama Lengkap Anda"
+                        :error="errors['nama']"></input-component>
                     <div class="mx-4 p-4 flex justify-between font-bold items-center">
                         <div class="w-1/4">
                             Jenis Kelamin
                         </div>
                         <div class="w-3/4 flex flex-row">
-                            <radio-component label="Laki-laki" :value="1" v-model="pegawai.kelamin"></radio-component>
+                            <radio-component label="Laki-laki" :value="1" v-model="pegawai.kelamin" :error="errors['kelamin']"></radio-component>
                             <radio-component label="Perempuan" :value="0" v-model="pegawai.kelamin"></radio-component>
                         </div>
-                    </div>    
-                    <input-component type="number" v-model="pegawai.umur" label="Umur" placeholder="Umur Anda"></input-component>
-                    <select-component label="Posisi" v-model="pegawai.posisi" :options="lowongan" placeholder="Pilih Posisi Yang Dilamar"></select-component>
-                    <input-component type="date" v-model="pegawai.entry" label="Tanggal Masuk"></input-component>
-                    <checkbox-component label="Penerima Bantuan" v-model="pegawai.lainnya" :options="keterangan"></checkbox-component>
+                    </div>
+                    <input-component type="number" v-model="pegawai.umur" label="Umur" placeholder="Umur Anda"
+                        :error="errors['umur']"></input-component>
+                    <select-component label="Posisi" v-model="pegawai.posisi" :options="lowongan"
+                        placeholder="Pilih Posisi Yang Dilamar" :error="errors['posisi']"></select-component>
+                    <input-component type="date" v-model="pegawai.entry" label="Tanggal Masuk"
+                        :error="errors['entry']"></input-component>
+                    <checkbox-component label="Penerima Bantuan" v-model="pegawai.lainnya"
+                        :options="keterangan"></checkbox-component>
                     <div class="flex mx-8 p-4 items-center space-x-6 font-bold justify-end">
                         <button class="bg-green-600 px-4 py-2 text-white rounded-md" type="submit">
                             Simpan
@@ -78,14 +83,14 @@
 import InputComponent from './InputComponent.vue'
 import SelectComponent from './SelectComponent.vue'
 import RadioComponent from './RadioComponent.vue'
-import CheckboxComponent from './CheckboxComponent.vue' 
+import CheckboxComponent from './CheckboxComponent.vue'
 
 export default {
     components: {
-            InputComponent,
-            SelectComponent,
-            RadioComponent,
-            CheckboxComponent
+        InputComponent,
+        SelectComponent,
+        RadioComponent,
+        CheckboxComponent
     },
     data() {
         return {
@@ -99,17 +104,18 @@ export default {
                 lainnya: ""
             },
             lowongan: [
-                {value: 1, text: "Head Marketing"},
-                {value: 2, text: "Supervisor"},
-                {value: 3, text: "Secretary"},
-                {value: 4, text: "Customer Service"},
-                {value: 5, text: "Cleaning Service"}
+                { value: 1, text: "Head Marketing" },
+                { value: 2, text: "Supervisor" },
+                { value: 3, text: "Secretary" },
+                { value: 4, text: "Customer Service" },
+                { value: 5, text: "Cleaning Service" }
             ],
             keterangan: [
-                {value: 1, text: "BLT"},
-                {value: 2, text: "KIS"},
-                {value: 3, text: "Prakerja"}
-            ]
+                { value: 1, text: "BLT" },
+                { value: 2, text: "KIS" },
+                { value: 3, text: "Prakerja" }
+            ],
+            errors: {}
         };
     },
     methods: {
@@ -119,6 +125,15 @@ export default {
         closeShow() {
             this.show = false;
         },
+        add() {
+            this.errors = {
+                nama: 'Nama belum diisi',
+                kelamin: 'Jenis kelamin belum dipilih',
+                umur: 'Umur belum diisi',
+                posisi: 'Posisi belum dipilih',
+                entry: 'Tanggal belum dipilih'
+            };
+        }
     }
 };
 </script>
