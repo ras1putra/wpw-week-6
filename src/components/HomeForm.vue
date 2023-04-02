@@ -30,17 +30,7 @@
                         </div>
                     </div>
                     <input-component type="number" v-model="pegawai.umur" label="Umur" placeholder="Umur Anda"></input-component>
-                    <div class="mx-4 p-4 flex justify-between font-bold items-center">
-                        <label for="posisi">Posisi</label>
-                        <div class="w-3/4">
-                            <select name="posisi" id="posisi" placeholder="Posisi yang Dilamar" class="px-4 py-2">
-                                <option value="1">Head Marketing</option>
-                                <option value="2">Sales Assistan</option>
-                                <option value="3">Head Timekeeper</option>
-                                <option value="4">Tugas Teroos</option>
-                            </select>
-                        </div>
-                    </div>
+                    <select-component label="Posisi" v-model="pegawai.posisi" :options="lowongan" placeholder="Pilih Posisi Yang Dilamar"></select-component>
                     <div class="mx-4 p-4 flex justify-between font-bold items-center">
                         <label for="date">Tanggal Masuk</label>
                         <input type="date" name="date" class="w-3/4 px-4 py-2">
@@ -88,10 +78,12 @@
 </template>
 <script>
 import InputComponent from './InputComponent.vue'
+import SelectComponent from './SelectComponent.vue'
 
 export default {
     components: {
-            InputComponent
+            InputComponent,
+            SelectComponent
     },
     data() {
         return {
@@ -102,7 +94,14 @@ export default {
                 umur: "",
                 posisi: "",
                 entry: ""
-            }
+            },
+            lowongan: [
+                {value: 1, text: "Head Marketing"},
+                {value: 2, text: "Supervisor"},
+                {value: 3, text: "Secretary"},
+                {value: 4, text: "Customer Service"},
+                {value: 5, text: "Cleaning Service"}
+            ]
         };
     },
     methods: {
