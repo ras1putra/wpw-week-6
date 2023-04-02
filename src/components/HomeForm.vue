@@ -1,5 +1,5 @@
 <template>
-    <div>{{ pegawai }}</div>
+    <div class="z-102">{{ pegawai }}</div>
     <div class="m-0 p-4 bg-gray-100">
         <div class="m-4 p-4 bg-white rounded-md shadow-md">
             <div class="justify-between flex">
@@ -16,7 +16,7 @@
             <form>
                 <div v-show="show"
                     class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-100 bg-gray-200 w-[600px] text-slate-600 rounded-xl shadow-xl">
-                    <div class="p-4 text-center text-xl font-bold mt-6 text-black">
+                    <div class="p-4 text-center text-xl font-bold mt-4 text-black">
                         Tambah Pekerja Baru
                     </div>
                     <input-component type="text" v-model="pegawai.nama" label="Nama Lengkap" placeholder="Nama Lengkap Anda"></input-component>
@@ -32,7 +32,8 @@
                     <input-component type="number" v-model="pegawai.umur" label="Umur" placeholder="Umur Anda"></input-component>
                     <select-component label="Posisi" v-model="pegawai.posisi" :options="lowongan" placeholder="Pilih Posisi Yang Dilamar"></select-component>
                     <input-component type="date" v-model="pegawai.entry" label="Tanggal Masuk"></input-component>
-                    <div class="flex mx-8 p-4 items-center space-x-6 font-bold justify-end mt-6">
+                    <checkbox-component label="Penerima Bantuan" v-model="pegawai.lainnya" :options="keterangan"></checkbox-component>
+                    <div class="flex mx-8 p-4 items-center space-x-6 font-bold justify-end">
                         <button class="bg-green-600 px-4 py-2 text-white rounded-md" type="submit">
                             Simpan
                         </button>
@@ -77,12 +78,14 @@
 import InputComponent from './InputComponent.vue'
 import SelectComponent from './SelectComponent.vue'
 import RadioComponent from './RadioComponent.vue'
+import CheckboxComponent from './CheckboxComponent.vue' 
 
 export default {
     components: {
             InputComponent,
             SelectComponent,
-            RadioComponent
+            RadioComponent,
+            CheckboxComponent
     },
     data() {
         return {
@@ -92,7 +95,8 @@ export default {
                 kelamin: "",
                 umur: "",
                 posisi: "",
-                entry: ""
+                entry: "",
+                lainnya: ""
             },
             lowongan: [
                 {value: 1, text: "Head Marketing"},
@@ -100,6 +104,11 @@ export default {
                 {value: 3, text: "Secretary"},
                 {value: 4, text: "Customer Service"},
                 {value: 5, text: "Cleaning Service"}
+            ],
+            keterangan: [
+                {value: 1, text: "BLT"},
+                {value: 2, text: "KIS"},
+                {value: 3, text: "Prakerja"}
             ]
         };
     },
