@@ -2,7 +2,7 @@
     <div class="mx-4 p-4 flex justify-between font-bold items-center">
         <label>{{ label }}</label>
             <div class="rounded-md p-2 flex-col space-x-2" v-for="option in options" :key="`checkbox-${option.value}`">
-                <input :id="option.text" type="checkbox" :value="option.text" :checked="isChecked(option.value)" @change="handleChange"/>
+                <input :id="option.text" type="checkbox" :value="option.text" :checked="isChecked(option.text)" @change="handleChange"/>
                 <label :for="option.text">{{ option.text }}</label>
             </div>
     </div>

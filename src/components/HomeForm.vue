@@ -37,8 +37,12 @@
                     <checkbox-component label="Penerima Bantuan" v-model="form.lainnya"
                         :options="keterangan"></checkbox-component>
                     <div class="flex mx-8 p-4 items-center space-x-6 font-bold justify-end">
-                        <button class="bg-green-600 px-4 py-2 text-white rounded-md" type="submit">
+                        <button v-show="!updateSubmit" class="bg-green-600 px-4 py-2 text-white rounded-md" type="submit">
                             Simpan
+                        </button>
+                        <button type="button" v-show="updateSubmit" @click="update(form)"
+                            class="bg-green-600 px-4 py-2 text-white rounded-md">
+                            Update
                         </button>
                         <button type="button" class="bg-red-600 px-6 py-2 text-white rounded-md" @click="closeShow">
                             Batal
@@ -64,14 +68,15 @@
                     <div class="col-span-1">{{ items.umur }}</div>
                     <div class="col-span-2">{{ items.posisi }}</div>
                     <div class="col-span-1">{{ items.entry }}</div>
-                    <div class="col-span-2" v-if="items.lainnya !== ''">
+                    <div class="col-span-2" v-if="items.lainnya.length > 0">
                         <ul>
                             <li v-for="(bantuan, index) in items.lainnya" :key="index">{{ bantuan }}</li>
                         </ul>
                     </div>
                     <div class="col-span-2" v-else>Tidak ada</div>
                     <div>
-                        <button class="font-bold text-white bg-green-600 rounded-md py-2 w-16 hover:opacity-40">
+                        <button @click="edit(items)"
+                            class="font-bold text-white bg-green-600 rounded-md py-2 w-16 hover:opacity-40">
                             Edit
                         </button>
                     </div>
@@ -122,7 +127,8 @@ export default {
                 { value: 1, text: "BLT" },
                 { value: 2, text: "KIS" },
                 { value: 3, text: "Prakerja" }
-            ]
+            ],
+            updateSubmit: false
         };
     },
     mounted() {
@@ -134,6 +140,13 @@ export default {
         },
         closeShow() {
             this.show = false;
+            this.form.id = "";
+            this.form.nama = "";
+            this.form.kelamin = "";
+            this.form.umur = "";
+            this.form.posisi = "";
+            this.form.entry = "";
+            this.form.lainnya = [{}];
         },
         load() {
             axios
@@ -149,9 +162,43 @@ export default {
             axios.post("http://localhost:3000/pegawai/", this.form).then((res) => {
                 this.load();
             }),
-                this.form.nama = "",
-                this.show = false;
-        }
+                this.form.nama = "";
+            this.show = false;
+        },
+        edit(items) {
+            this.show = true;
+            this.updateSubmit = true;
+            this.form.id = items.id;
+            this.form.nama = items.nama;
+            this.form.kelamin = items.kelamin;
+            this.form.umur = items.umur;
+            this.form.posisi = items.posisi;
+            this.form.entry = items.entry;
+            this.form.lainnya = items.lainnya;
+        },
+        update(form) {
+            return axios
+                .put("http://localhost:3000/pegawai/" + form.id, {
+                    nama: form.nama,
+                    kelamin: form.kelamin,
+                    umur: form.umur,
+                    posisi: form.posisi,
+                    entry: form.entry,
+                    lainnya: this.form.lainnya,
+                })
+                .then((res) => {
+                    this.load();
+                    this.form.id = "";
+                    this.form.nama = "";
+                    this.updateSubmit = false;
+                    this.show = false
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+
+
     }
 };
 </script>

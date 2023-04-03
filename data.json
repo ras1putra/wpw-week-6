@@ -23,14 +23,10 @@
     {
       "nama": "Suryski",
       "kelamin": "Laki-laki",
-      "umur": "22",
-      "posisi": "Cleaning Service",
+      "umur": "33",
+      "posisi": "Head Marketing",
       "entry": "2023-04-22",
-      "lainnya": [
-        "BLT",
-        "KIS",
-        "Prakerja"
-      ],
+      "lainnya": [],
       "id": 3
     }
   ]
