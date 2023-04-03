@@ -1,5 +1,4 @@
 <template>
-    <div class="z-102">{{ pegawai }}</div>
     <div class="m-0 p-4 bg-gray-100">
         <div class="m-4 p-4 bg-white rounded-md shadow-md">
             <div class="justify-between flex">
@@ -19,20 +18,24 @@
                     <div class="p-4 text-center text-xl font-bold mt-4 text-black">
                         Tambah Pekerja Baru
                     </div>
-                    <input-component type="text" v-model="pegawai.nama" label="Nama Lengkap" placeholder="Nama Lengkap Anda"></input-component>
+                    <input-component type="text" v-model="form.nama" label="Nama Lengkap"
+                        placeholder="Nama Lengkap Anda"></input-component>
                     <div class="mx-4 p-4 flex justify-between font-bold items-center">
                         <div class="w-1/4">
                             Jenis Kelamin
                         </div>
                         <div class="w-3/4 flex flex-row">
-                            <radio-component label="Laki-laki" :value="1" v-model="pegawai.kelamin"></radio-component>
-                            <radio-component label="Perempuan" :value="0" v-model="pegawai.kelamin"></radio-component>
+                            <radio-component label="Laki-laki" :value="1" v-model="form.kelamin"></radio-component>
+                            <radio-component label="Perempuan" :value="0" v-model="form.kelamin"></radio-component>
                         </div>
-                    </div>    
-                    <input-component type="number" v-model="pegawai.umur" label="Umur" placeholder="Umur Anda"></input-component>
-                    <select-component label="Posisi" v-model="pegawai.posisi" :options="lowongan" placeholder="Pilih Posisi Yang Dilamar"></select-component>
-                    <input-component type="date" v-model="pegawai.entry" label="Tanggal Masuk"></input-component>
-                    <checkbox-component label="Penerima Bantuan" v-model="pegawai.lainnya" :options="keterangan"></checkbox-component>
+                    </div>
+                    <input-component type="number" v-model="form.umur" label="Umur"
+                        placeholder="Umur Anda"></input-component>
+                    <select-component label="Posisi" v-model="form.posisi" :options="lowongan"
+                        placeholder="Pilih Posisi Yang Dilamar"></select-component>
+                    <input-component type="date" v-model="form.entry" label="Tanggal Masuk"></input-component>
+                    <checkbox-component label="Penerima Bantuan" v-model="form.lainnya"
+                        :options="keterangan"></checkbox-component>
                     <div class="flex mx-8 p-4 items-center space-x-6 font-bold justify-end">
                         <button class="bg-green-600 px-4 py-2 text-white rounded-md" type="submit">
                             Simpan
@@ -48,17 +51,20 @@
                     <div>No.</div>
                     <div class="col-span-2">Nama</div>
                     <div>Jenis Kelamin</div>
-                    <div class="col-span-2">Umur</div>
+                    <div class="col-span-1">Umur</div>
                     <div class="col-span-2">Posisi</div>
-                    <div class="col-span-2">Tanggal Masuk</div>
+                    <div class="col-span-1">Tanggal Masuk</div>
+                    <div class="col-span-2">Bantuan</div>
                 </div>
-                <div class="p-2 bg-gray-200 grid grid-cols-12 text-center items-center">
-                    <div class="col-span-1">1</div>
-                    <div class="col-span-2 text-left">Paidi</div>
-                    <div class="col-span-1">L</div>
-                    <div class="col-span-2">12</div>
-                    <div class="col-span-2">sales</div>
-                    <div class="col-span-2">12-01-2020</div>
+                <div class="p-2 bg-gray-200 grid grid-cols-12 text-center items-center" v-for="(items, index) in pegawai" key="index">
+                    <div class="col-span-1">{{ index + 1 }}</div>
+                    <div class="col-span-2 text-left">{{ items.nama }}</div>
+                    <div class="col-span-1">{{ items.kelamin }}</div>
+                    <div class="col-span-1">{{ items.umur }}</div>
+                    <div class="col-span-2">{{ items.posisi }}</div>
+                    <div class="col-span-1">{{ items.entry }}</div>
+                    <div class="col-span-2" v-if="items.lainnya !== ''">{{ items.lainnya }}</div>
+                    <div class="col-span-2" v-else>Tidak ada</div>                    
                     <div>
                         <button class="font-bold text-white bg-green-600 rounded-md py-2 w-16 hover:opacity-40">
                             Edit
@@ -78,39 +84,44 @@
 import InputComponent from './InputComponent.vue'
 import SelectComponent from './SelectComponent.vue'
 import RadioComponent from './RadioComponent.vue'
-import CheckboxComponent from './CheckboxComponent.vue' 
+import CheckboxComponent from './CheckboxComponent.vue'
+import axios from 'axios'
 
 export default {
     components: {
-            InputComponent,
-            SelectComponent,
-            RadioComponent,
-            CheckboxComponent
+        InputComponent,
+        SelectComponent,
+        RadioComponent,
+        CheckboxComponent
     },
     data() {
         return {
             show: false,
-            pegawai: {
+            pegawai: [],
+            form: {
                 nama: "",
                 kelamin: "",
                 umur: "",
                 posisi: "",
                 entry: "",
-                lainnya: ""
+                lainnya: [],
             },
             lowongan: [
-                {value: 1, text: "Head Marketing"},
-                {value: 2, text: "Supervisor"},
-                {value: 3, text: "Secretary"},
-                {value: 4, text: "Customer Service"},
-                {value: 5, text: "Cleaning Service"}
+                { value: 1, text: "Head Marketing" },
+                { value: 2, text: "Supervisor" },
+                { value: 3, text: "Secretary" },
+                { value: 4, text: "Customer Service" },
+                { value: 5, text: "Cleaning Service" }
             ],
             keterangan: [
-                {value: 1, text: "BLT"},
-                {value: 2, text: "KIS"},
-                {value: 3, text: "Prakerja"}
+                { value: 1, text: "BLT" },
+                { value: 2, text: "KIS" },
+                { value: 3, text: "Prakerja" }
             ]
         };
+    },
+    mounted() {
+        this.load();
     },
     methods: {
         showClass() {
@@ -118,6 +129,16 @@ export default {
         },
         closeShow() {
             this.show = false;
+        },
+        load() {
+            axios
+                .get("http://localhost:3000/pegawai")
+                .then((res) => {
+                    this.pegawai = res.data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
     }
 };

@@ -6,7 +6,7 @@
         "umur": 18,
         "posisi": "Head Marketing",
         "entry": "12/02/2023",
-        "lainnya": "",
+        "lainnya": [],
         "id": 1
       },
       {
@@ -15,7 +15,9 @@
         "umur": 26,
         "posisi": "Sales Marketing",
         "entry": "01/02/2023",
-        "lainnya": "Prakerja",
+        "lainnya": [
+            "Prakerja"
+        ],
         "id": 1
       }
     ]
