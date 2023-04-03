@@ -189,10 +189,15 @@ export default {
                 })
                 .then((res) => {
                     this.load();
-                    this.form.id = "";
-                    this.form.nama = "";
                     this.updateSubmit = false;
                     this.show = false
+                    this.form.id = "";
+                    this.form.nama = "";
+                    this.form.kelamin = "";
+                    this.form.umur = "";
+                    this.form.posisi = "";
+                    this.form.entry = "";
+                    this.form.lainnya = [];
                 })
                 .catch((err) => {
                     console.log(err);
