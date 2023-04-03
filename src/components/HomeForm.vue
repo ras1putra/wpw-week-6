@@ -81,7 +81,8 @@
                         </button>
                     </div>
                     <div class="col-span-1">
-                        <button class="font-bold text-white bg-red-600 rounded-md py-2 w-16 hover:opacity-40">
+                        <button @click="del(items)"
+                            class="font-bold text-white bg-red-600 rounded-md py-2 w-16 hover:opacity-40">
                             Hapus
                         </button>
                     </div>
@@ -146,7 +147,7 @@ export default {
             this.form.umur = "";
             this.form.posisi = "";
             this.form.entry = "";
-            this.form.lainnya = [{}];
+            this.form.lainnya = [];
         },
         load() {
             axios
@@ -197,8 +198,13 @@ export default {
                     console.log(err);
                 });
         },
-
-
+        del(items) {
+            axios.delete("http://localhost:3000/pegawai/" + items.id).then((res) => {
+                this.load();
+                let index = this.pegawai.indexOf(form.nama);
+                this.pegawai.splice(index, 1);
+            });
+        },
     }
 };
 </script>
