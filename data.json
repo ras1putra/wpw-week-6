@@ -1,23 +1,37 @@
 {
-    "pegawai": [
-      {
-        "nama": "Masriki Suhendra",
-        "kelamin": "L",
-        "umur": 18,
-        "posisi": "Head Marketing",
-        "entry": "12/02/2023",
-        "lainnya": "",
-        "id": 1
-      },
-      {
-        "nama": "Masriki Suhendra Wijarwati Ningrum",
-        "kelamin": "P",
-        "umur": 26,
-        "posisi": "Sales Marketing",
-        "entry": "01/02/2023",
-        "lainnya": "Prakerja",
-        "id": 1
-      }
-    ]
-  }
-  
+  "pegawai": [
+    {
+      "nama": "Masriki Suhendra",
+      "kelamin": "L",
+      "umur": 18,
+      "posisi": "Head Marketing",
+      "entry": "12/02/2023",
+      "lainnya": [],
+      "id": 1
+    },
+    {
+      "nama": "Masriki Suhendra Wijarwati Ningrum",
+      "kelamin": "P",
+      "umur": 26,
+      "posisi": "Sales Marketing",
+      "entry": "01/02/2023",
+      "lainnya": [
+        "Prakerja"
+      ],
+      "id": 2
+    },
+    {
+      "nama": "Suryski",
+      "kelamin": "Laki-laki",
+      "umur": "22",
+      "posisi": "Cleaning Service",
+      "entry": "2023-04-22",
+      "lainnya": [
+        "BLT",
+        "KIS",
+        "Prakerja"
+      ],
+      "id": 3
+    }
+  ]
+}

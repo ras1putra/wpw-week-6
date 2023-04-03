@@ -12,7 +12,7 @@
                     Pekerja Baru
                 </button>
             </div>
-            <form>
+            <form @submit.prevent="add">
                 <div v-show="show"
                     class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-100 bg-gray-200 w-[600px] text-slate-600 rounded-xl shadow-xl">
                     <div class="p-4 text-center text-xl font-bold mt-4 text-black">
@@ -56,15 +56,20 @@
                     <div class="col-span-1">Tanggal Masuk</div>
                     <div class="col-span-2">Bantuan</div>
                 </div>
-                <div class="p-2 bg-gray-200 grid grid-cols-12 text-center items-center" v-for="(items, index) in pegawai" key="index">
+                <div class="p-2 bg-gray-200 grid grid-cols-12 text-center items-center" v-for="(items, index) in pegawai"
+                    :key="index">
                     <div class="col-span-1">{{ index + 1 }}</div>
                     <div class="col-span-2 text-left">{{ items.nama }}</div>
                     <div class="col-span-1">{{ items.kelamin }}</div>
                     <div class="col-span-1">{{ items.umur }}</div>
                     <div class="col-span-2">{{ items.posisi }}</div>
                     <div class="col-span-1">{{ items.entry }}</div>
-                    <div class="col-span-2" v-if="items.lainnya !== ''">{{ items.lainnya }}</div>
-                    <div class="col-span-2" v-else>Tidak ada</div>                    
+                    <div class="col-span-2" v-if="items.lainnya !== ''">
+                        <ul>
+                            <li v-for="(bantuan, index) in items.lainnya" :key="index">{{ bantuan }}</li>
+                        </ul>
+                    </div>
+                    <div class="col-span-2" v-else>Tidak ada</div>
                     <div>
                         <button class="font-bold text-white bg-green-600 rounded-md py-2 w-16 hover:opacity-40">
                             Edit
@@ -140,6 +145,13 @@ export default {
                     console.log(err);
                 });
         },
+        add() {
+            axios.post("http://localhost:3000/pegawai/", this.form).then((res) => {
+                this.load();
+            }),
+                this.form.nama = "",
+                this.show = false;
+        }
     }
 };
 </script>
