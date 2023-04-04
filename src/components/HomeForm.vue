@@ -18,22 +18,24 @@
                     <div class="p-4 text-center text-xl font-bold mt-4 text-black">
                         Tambah Pekerja Baru
                     </div>
-                    <input-component type="text" v-model="form.nama" label="Nama Lengkap"
-                        placeholder="Nama Lengkap Anda"></input-component>
+                    <input-component type="text" v-model="form.nama" label="Nama Lengkap" placeholder="Nama Lengkap Anda"
+                        :error="errors['nama']"></input-component>
                     <div class="mx-4 p-4 flex justify-between font-bold items-center">
                         <div class="w-1/4">
                             Jenis Kelamin
                         </div>
                         <div class="w-3/4 flex flex-row">
-                            <radio-component label="Laki-laki" :value="1" v-model="form.kelamin"></radio-component>
+                            <radio-component label="Laki-laki" :value="1" v-model="form.kelamin"
+                                :error="errors['kelamin']"></radio-component>
                             <radio-component label="Perempuan" :value="0" v-model="form.kelamin"></radio-component>
                         </div>
                     </div>
-                    <input-component type="number" v-model="form.umur" label="Umur"
-                        placeholder="Umur Anda"></input-component>
+                    <input-component type="number" v-model="form.umur" label="Umur" placeholder="Umur Anda"
+                        :error="errors['umur']"></input-component>
                     <select-component label="Posisi" v-model="form.posisi" :options="lowongan"
-                        placeholder="Pilih Posisi Yang Dilamar"></select-component>
-                    <input-component type="date" v-model="form.entry" label="Tanggal Masuk"></input-component>
+                        placeholder="Pilih Posisi Yang Dilamar" :error="errors['posisi']"></select-component>
+                    <input-component type="date" v-model="form.entry" label="Tanggal Masuk"
+                        :error="errors['entry']"></input-component>
                     <checkbox-component label="Penerima Bantuan" v-model="form.lainnya"
                         :options="keterangan"></checkbox-component>
                     <div class="flex mx-8 p-4 items-center space-x-6 font-bold justify-end">
@@ -129,7 +131,8 @@ export default {
                 { value: 2, text: "KIS" },
                 { value: 3, text: "Prakerja" }
             ],
-            updateSubmit: false
+            updateSubmit: false,
+            errors: {}
         };
     },
     mounted() {
@@ -160,11 +163,23 @@ export default {
                 });
         },
         add() {
-            axios.post("http://localhost:3000/pegawai/", this.form).then((res) => {
-                this.load();
-            }),
+            if (this.form.nama === "" || this.form.kelamin === "" || this.form.umur === "" || this.form.posisi === "" || this.form.entry === "") {
+                this.show = true;
+                this.errors = {
+                    nama: 'Nama belum diisi',
+                    kelamin: 'Jenis kelamin belum diisi',
+                    umur: 'Umur belum diisi',
+                    posisi: 'Posisi belum diisi',
+                    entry: 'Tanggal masuk belum diisi'
+                }
+            }
+            else {
+                axios.post("http://localhost:3000/pegawai/", this.form).then((res) => {
+                    this.load();
+                })
                 this.form.nama = "";
-            this.show = false;
+                this.show = false;
+            }
         },
         edit(items) {
             this.show = true;

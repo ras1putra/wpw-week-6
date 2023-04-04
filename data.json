@@ -1,26 +1,15 @@
 {
   "pegawai": [
     {
-      "nama": "Masriki Suhendra Wijarwati Ningrum",
+      "nama": "Surandki",
       "kelamin": "Perempuan",
-      "umur": 26,
-      "posisi": "Head Marketing",
-      "entry": "2023-04-21",
-      "lainnya": [
-        "Prakerja",
-        "KIS"
-      ],
-      "id": 2
-    },
-    {
-      "nama": "Suryski",
-      "kelamin": "Laki-laki",
       "umur": "33",
-      "posisi": "Head Marketing",
+      "posisi": "Secretary",
       "entry": "2023-04-22",
       "lainnya": [
         "KIS",
-        "Prakerja"
+        "Prakerja",
+        "BLT"
       ],
       "id": 3
     }
