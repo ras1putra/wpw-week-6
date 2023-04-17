@@ -1,17 +1,80 @@
 {
   "pegawai": [
     {
-      "nama": "Surandki",
-      "kelamin": "Perempuan",
+      "nama": "Masriki Suhendra",
+      "kelamin": "Laki-laki",
       "umur": "33",
+      "posisi": "Cleaning Service",
+      "entry": "2023-04-20",
+      "lainnya": [],
+      "id": 1
+    },
+    {
+      "nama": "Masrika Suhendra",
+      "kelamin": "Perempuan",
+      "umur": "21",
       "posisi": "Secretary",
       "entry": "2023-04-22",
       "lainnya": [
+        "BLT",
         "KIS",
-        "Prakerja",
-        "BLT"
+        "Prakerja"
       ],
+      "id": 2
+    },
+    {
+      "nama": "Jerry Chole",
+      "kelamin": "Laki-laki",
+      "umur": "33",
+      "posisi": "Customer Service",
+      "entry": "2023-03-27",
+      "lainnya": [],
       "id": 3
+    },
+    {
+      "nama": "Synyster",
+      "kelamin": "Laki-laki",
+      "umur": "52",
+      "posisi": "Head Marketing",
+      "entry": "2023-04-16",
+      "lainnya": [],
+      "id": 4
+    },
+    {
+      "nama": "Matthew",
+      "kelamin": "Laki-laki",
+      "umur": "22",
+      "posisi": "Supervisor",
+      "entry": "2023-04-12",
+      "lainnya": [],
+      "id": 5
+    },
+    {
+      "nama": "Charles",
+      "kelamin": "Laki-laki",
+      "umur": "37",
+      "posisi": "Secretary",
+      "entry": "2023-04-16",
+      "lainnya": [],
+      "id": 6
+    },
+    {
+      "nama": "Vegeance Zacky",
+      "kelamin": "Laki-laki",
+      "umur": "25",
+      "posisi": "Secretary",
+      "entry": "2023-04-16",
+      "lainnya": [],
+      "id": 7
+    },
+    {
+      "nama": "Layla",
+      "kelamin": "Perempuan",
+      "umur": "33",
+      "posisi": "Customer Service",
+      "entry": "2023-04-17",
+      "lainnya": [],
+      "id": 8
     }
   ]
 }

@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import './style.css'
-import HomeForm from './components/HomeForm.vue'
+import App from './components/App.vue'
+import router from './router'
 
-createApp(HomeForm).mount('#app')
+createApp(App).use(router).mount('#app')

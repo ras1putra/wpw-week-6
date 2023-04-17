@@ -3,7 +3,7 @@
         <input :id="label" type="radio" class="mx-2" :value="label" :checked="modelValue == label"
             @change="$emit('update:modelValue', $event.target.value)" v-bind="$attrs" :class="{ 'is-invalid': getError }">
         <label :for="label">{{ label }}</label>
-        <div class="mx-6 px-4 transform translate-y-[28px] translate-x-[-165px] absolute text-[12px] text-red-500 z-105 ml-[25%]"
+        <div class="mx-6 px-4 transform translate-y-[28px] translate-x-[-165px] absolute text-[12px] text-red-600 z-105 ml-[25%] font-medium"
             v-if="getError()">{{ getError() }}
         </div>
     </div>

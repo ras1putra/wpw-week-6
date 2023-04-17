@@ -4,7 +4,7 @@
         <input class="w-3/4 ml-4 rounded-md p-2" v-bind="$attrs" :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)" :class="{ 'is-invalid': getError }" />
     </div>
-    <div class="mx-6 px-4 transform translate-y-[-6px] absolute text-[12px] text-red-600 z-105 ml-[25%]" v-if="getError()">
+    <div class="mx-6 px-4 transform translate-y-[-6px] absolute text-[12px] text-red-600 z-105 ml-[25%] font-medium" v-if="getError()">
         {{ getError() }}</div>
 </template>
 <script>
