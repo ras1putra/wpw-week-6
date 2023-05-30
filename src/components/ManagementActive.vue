@@ -55,7 +55,7 @@
                     </div>
                 </form>
                 <div class="pt-8">
-                    <div class="p-2 py-4 text-white bg-cyan-500 font-bold grid grid-cols-12 text-center">
+                    <div class="p-2 py-4 text-white bg-cyan-500 font-bold grid grid-cols-12 text-center items-center">
                         <div>No.</div>
                         <div class="col-span-2">Nama</div>
                         <div>Jenis Kelamin</div>
@@ -160,14 +160,18 @@ export default {
             this.updateSubmit = false;
         },
         load() {
-            axios
-                .get("http://localhost:3000/pegawai")
-                .then((res) => {
-                    this.pegawai = res.data;
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+            var theres = localStorage.getItem('authState')
+            this.Token = JSON.parse(theres).accessToken
+            const response = axios.get('http://localhost:3000/660/pegawai', {
+                headers: {
+                    Authorization: 'Bearer ' + this.Token
+                }
+            });
+            response.then((res) => {
+                this.pegawai = res.data;
+            }).catch((err) => {
+                console.error(err);
+            });
         },
         add() {
             if (this.form.nama === "" || this.form.kelamin === "" || this.form.umur === "" || this.form.posisi === "" || this.form.entry === "") {
@@ -181,9 +185,17 @@ export default {
                 }
             }
             else {
-                axios.post("http://localhost:3000/pegawai/", this.form).then((res) => {
-                    this.load();
+                axios.post("http://localhost:3000/660/pegawai/", this.form, {
+                    headers: {
+                        Authorization: 'Bearer ' + this.Token
+                    }
                 })
+                    .then((res) => {
+                        this.load();
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
                 this.form.id = "";
                 this.form.nama = "";
                 this.form.kelamin = "";
@@ -208,18 +220,22 @@ export default {
         },
         update(form) {
             return axios
-                .put("http://localhost:3000/pegawai/" + form.id, {
+                .put("http://localhost:3000/660/pegawai/" + form.id, {
                     nama: form.nama,
                     kelamin: form.kelamin,
                     umur: form.umur,
                     posisi: form.posisi,
                     entry: form.entry,
-                    lainnya: this.form.lainnya,
+                    lainnya: this.form.lainnya
+                }, {
+                    headers: {
+                        Authorization: 'Bearer ' + this.Token
+                    }
                 })
                 .then((res) => {
                     this.load();
                     this.updateSubmit = false;
-                    this.show = false
+                    this.show = false;
                     this.form.id = "";
                     this.form.nama = "";
                     this.form.kelamin = "";
@@ -234,11 +250,20 @@ export default {
                 });
         },
         del(items) {
-            axios.delete("http://localhost:3000/pegawai/" + items.id).then((res) => {
-                this.load();
-                let index = this.pegawai.indexOf(form.nama);
-                this.pegawai.splice(index, 1);
-            });
+            axios
+                .delete("http://localhost:3000/660/pegawai/" + items.id, {
+                    headers: {
+                        Authorization: 'Bearer ' + this.Token
+                    }
+                })
+                .then((res) => {
+                    this.load();
+                    let index = this.pegawai.indexOf(items);
+                    this.pegawai.splice(index, 1);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
     }
 };

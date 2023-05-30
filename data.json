@@ -1,37 +1,6 @@
 {
   "pegawai": [
     {
-      "nama": "Masriki Suhendra",
-      "kelamin": "Laki-laki",
-      "umur": "33",
-      "posisi": "Cleaning Service",
-      "entry": "2023-04-20",
-      "lainnya": [],
-      "id": 1
-    },
-    {
-      "nama": "Masrika Suhendra",
-      "kelamin": "Perempuan",
-      "umur": "21",
-      "posisi": "Secretary",
-      "entry": "2023-04-22",
-      "lainnya": [
-        "BLT",
-        "KIS",
-        "Prakerja"
-      ],
-      "id": 2
-    },
-    {
-      "nama": "Jerry Chole",
-      "kelamin": "Laki-laki",
-      "umur": "33",
-      "posisi": "Customer Service",
-      "entry": "2023-03-27",
-      "lainnya": [],
-      "id": 3
-    },
-    {
       "nama": "Synyster",
       "kelamin": "Laki-laki",
       "umur": "52",
@@ -39,24 +8,6 @@
       "entry": "2023-04-16",
       "lainnya": [],
       "id": 4
-    },
-    {
-      "nama": "Matthew",
-      "kelamin": "Laki-laki",
-      "umur": "22",
-      "posisi": "Supervisor",
-      "entry": "2023-04-12",
-      "lainnya": [],
-      "id": 5
-    },
-    {
-      "nama": "Charles",
-      "kelamin": "Laki-laki",
-      "umur": "37",
-      "posisi": "Secretary",
-      "entry": "2023-04-16",
-      "lainnya": [],
-      "id": 6
     },
     {
       "nama": "Vegeance Zacky",
@@ -84,6 +35,32 @@
       "entry": "2023-04-21",
       "lainnya": [],
       "id": 9
+    },
+    {
+      "nama": "f",
+      "kelamin": "Laki-laki",
+      "umur": "44",
+      "posisi": "Supervisor",
+      "entry": "2023-05-19",
+      "lainnya": [],
+      "id": 10
     }
-  ]
+  ],
+  "users": [
+    {
+      "email": "haha@haha.com",
+      "password": "$2a$10$9Ee5IM1.wiTamikq3lNJH.DcreMnSszWTgc8jBoljAS389qn92/fi",
+      "perusahaan": "dsdsdsd",
+      "username": "sdadasdsad",
+      "id": 1
+    },
+    {
+      "email": "hahaha@hahaha.com",
+      "password": "$2a$10$MGUtRkOlBxw6rC6Qn3bSvuCNNhBmUxQryHDd/S/BrDnnlhSznQ0yq",
+      "perusahaan": "PT. EK",
+      "username": "hahaha",
+      "id": 2
+    }
+  ],
+  "login": []
 }

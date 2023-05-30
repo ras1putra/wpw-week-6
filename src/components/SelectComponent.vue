@@ -8,7 +8,7 @@
             </option>
         </select>
     </div>
-    <div class="mx-6 px-4 transform translate-y-[-6px] absolute text-[12px] text-red-600 z-105 ml-[25%] font-medium" v-if="getError()">{{ getError() }}</div>
+    <div class="mx-6 px-4 transform translate-y-[-6px] absolute text-[12px] text-red-600 z-105 pl-40 font-medium" v-if="getError()">{{ getError() }}</div>
 </template>        
 <script>
 export default {
