@@ -126,11 +126,18 @@ export default {
   methods: {
     load() {
       var theres = localStorage.getItem('authState');
-      if (typeof JSON.parse(theres)?.accessToken !== 'undefined') {
-        this.Token = JSON.parse(theres).accessToken;
-        if (this.Token !== null) {
-          this.showw = false;
-          this.showww = true;
+      if (theres !== null && typeof theres !== 'undefined') {
+        try {
+          var parsedData = JSON.parse(theres);
+          if (typeof parsedData.accessToken !== 'undefined') {
+            this.Token = parsedData.accessToken;
+            if (this.Token !== null) {
+              this.showw = false;
+              this.showww = true;
+            }
+          }
+        } catch (error) {
+          console.log('Error parsing JSON:', error);
         }
       }
     },

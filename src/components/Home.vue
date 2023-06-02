@@ -39,7 +39,7 @@ export default {
             alert: false
         };
     },
-    mounted() {
+    updated() {
         this.load();
     },
     methods: {

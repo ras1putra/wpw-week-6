@@ -74,6 +74,20 @@
       "perusahaan": "dsfsdf",
       "username": "sdf",
       "id": 4
+    },
+    {
+      "email": "hahaha@hahaha.hahaha",
+      "password": "$2a$10$KSQ0y.ohL/1Juse4NWsOIu3IydLbyeT1igS78.mHDQyZC6XQ6Wjue",
+      "perusahaan": "PT HAHAHA",
+      "username": "hahaha",
+      "id": 5
+    },
+    {
+      "email": "gggg@gggg.gggg",
+      "password": "$2a$10$rVs3Hb.Hjwgv4.mpgPoLx.lctltHbIgxRqOxgHaDhcCP9SWpyPimq",
+      "perusahaan": "PT GGGG",
+      "username": "gegegege",
+      "id": 6
     }
   ],
   "buangan": [
@@ -144,6 +158,24 @@
       "reason": "Resign",
       "time": "2023-06-02",
       "id": 5
+    },
+    {
+      "form": {
+        "nama": "Masriki Suhendra",
+        "kelamin": "Laki-laki",
+        "umur": "22",
+        "posisi": "Head Marketing",
+        "entry": "2023-05-31",
+        "lainnya": [
+          "BPJS",
+          "JHT"
+        ],
+        "perusahaan": "PT GGGG",
+        "id": 9
+      },
+      "reason": "PHK",
+      "time": "2023-06-02",
+      "id": 6
     }
   ]
 }

@@ -19,7 +19,8 @@
                         <div class="col-span-1">Tanggal Keluar</div>
                         <div class="col-span-1">Alasan</div>
                     </div>
-                    <div v-if="buangan.length === 0" class="p-2 bg-gray-200 grid grid-cols-12 text-center items-center hover:bg-white">
+                    <div v-if="buangan.length === 0"
+                        class="p-2 bg-gray-200 grid grid-cols-12 text-center items-center hover:bg-white">
                         <div class="col-span-12">
                             Belum ada data
                         </div>
@@ -75,10 +76,10 @@ export default {
             this.Token = JSON.parse(theres).accessToken;
             const response = axios.get('http://localhost:3000/660/buangan', {
                 params: {
-                    perusahaan: this.perusahaan
+                    'form.perusahaan': this.perusahaan
                 },
                 headers: {
-                    Authorization: 'Bearer ' + this.Token
+                    'Authorization': 'Bearer ' + this.Token
                 }
             });
             response
