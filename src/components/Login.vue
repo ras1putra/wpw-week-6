@@ -13,16 +13,33 @@
                     <button type="submit" class="w-full bg-cyan-600 px-6 py-2 text-white rounded-md hover:opacity-80">
                         Login
                     </button>
+                    <div v-if="feedback" class="absolute text-red-500 text-center top-[68%]">
+                        {{ feedback }}
+                    </div>
                 </div>
             </div>
         </form>
+    </div>
+    <div v-show="alert"
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-gray-200 w-screen h-screen text-slate-600 rounded-xl shadow-xl">
+        <div
+            class="absolute p-4 text-center text-xl font-bold mt-4 text-black top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div class="pl-20">
+                Anda sudah Login
+                <div class="mt-4">
+                    <button type="button" @click="oke()" class="bg-green-600 px-8 py-2 text-white rounded-md">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
   
 <script>
 import InputComponent from "./InputComponent.vue";
-import { login } from '../apis/auth-api';
-import { setState } from '../store';
+import { login } from "../apis/auth-api";
+import { setState } from "../store";
 
 export default {
     components: {
@@ -33,6 +50,9 @@ export default {
             email: "",
             password: "",
             errors: {},
+            feedback: "",
+            alert: false,
+            Token: "",
         };
     },
     mounted() {
@@ -42,6 +62,7 @@ export default {
         if (localStorage.password) {
             this.password = localStorage.password;
         }
+        this.load()
     },
     watch: {
         email(newEmail) {
@@ -49,7 +70,8 @@ export default {
         },
         password(newPassword) {
             localStorage.password = newPassword;
-        }
+        },
+
     },
     methods: {
         async loginForm() {
@@ -59,12 +81,32 @@ export default {
                     password: "Password belum diisi",
                 };
             } else {
-                const response = await login({ email: this.email, password: this.password });
-                setState(response);
-                this.$router.push("/dashboard")
+                try {
+                    const response = await login({
+                        email: this.email,
+                        password: this.password,
+                    });
+                    setState(response);
+                    this.$router.push("/dashboard");
+                } catch (error) {
+                    console.error(error);
+                    this.feedback = error.response.data;
+                }
             }
         },
-        
+        load() {
+            var theres = localStorage.getItem("authState");
+            if (typeof JSON.parse(theres)?.accessToken !== "undefined") {
+                this.Token = JSON.parse(theres).accessToken;
+                if (this.Token !== null) {
+                    this.alert = true;
+                }
+            }
+        },
+        oke() {
+            this.$router.push("/dashboard");
+            this.alert = false;
+        },
     },
 };
 </script>

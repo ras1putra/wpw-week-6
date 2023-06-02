@@ -21,4 +21,5 @@ export const clearState = () => {
   Object.assign(state, defaultState);
 
   localStorage.removeItem("authState");
+  localStorage.clear();
 };

@@ -4,7 +4,7 @@
             <div class="m-4 p-4 bg-white rounded-md shadow-md">
                 <div class="flex">
                     <div class="text-2xl font-light text-slate-600">
-                        Informasi Prosedur Pegawai
+                        Informasi Prosedur Satuan Data Pegawai
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@
             Dashboard Pengelola
           </div>
           <div class="mt-8 px-2 py-4 text-2xl text-white bg-cyan-500 font-semibold text-center items-center">
-            Selamat Datang <span class="font-bold">{{ username }}</span> dari {{ perusahaan }} <br> di Dashboard Pengelola Pegawai
+            Selamat Datang <span class="font-bold">{{ username }}</span> dari CV / PT <span class="font-extrabold">{{ perusahaan }}</span> <br> di Dashboard Pengelola Pegawai
           </div>
         </div>
       </div>
@@ -29,11 +29,17 @@
       if (localStorage.email) {
         this.email = localStorage.email;
       }
+      if (localStorage.perusahaan) {
+        this.perusahaan = localStorage.perusahaan;
+      }
       this.fetchUser();
     },
     watch: {
       email(newEmail) {
         localStorage.email = newEmail;
+      },
+      perusahaan(newPerusahaan) {
+        localStorage.perusahaan = newPerusahaan;
       }
     },
     methods: {

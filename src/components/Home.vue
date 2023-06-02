@@ -17,4 +17,45 @@
             <img src="/src/assets/banner.svg" class="w-[500px]">
         </div>
     </div>
+    <div v-show="alert" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-gray-200 w-screen h-screen text-slate-600 rounded-xl shadow-xl">
+        <div class="absolute p-4 text-center text-xl font-bold mt-4 text-black top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div class="pl-20">
+                Anda sudah Login
+                <div class="mt-4">
+                    <button type="button" @click="oke()" class="bg-green-600 px-8 py-2 text-white rounded-md">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            Token: "",
+            alert: false
+        };
+    },
+    mounted() {
+        this.load();
+    },
+    methods: {
+        load() {
+            var theres = localStorage.getItem('authState');
+            if (typeof JSON.parse(theres)?.accessToken !== 'undefined') {
+                this.Token = JSON.parse(theres).accessToken;
+                if (this.Token !== null) {
+                    this.alert = true;
+                }
+            }
+        },
+        oke() {
+            this.$router.push("/dashboard");
+            this.alert = false;
+        }
+    }
+};
+</script>

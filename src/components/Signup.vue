@@ -5,7 +5,7 @@
                 <div class="text-2xl font-semibold text-slate-600 text-center mt-8 pt-8 pb-8">
                     Daftar Akun
                 </div>
-                <input-component type="text" label="Nama Perusahaan" placeholder="Nama Perusahaan" v-model="perusahaan"
+                <input-component type="text" label="Nama CV / PT" placeholder="Nama Tempat Usaha" v-model="perusahaan"
                     :error="errors['perusahaan']"></input-component>
                 <input-component type="text" label="Username" placeholder="Username Anda" v-model="username"
                     :error="errors['username']"></input-component>
@@ -17,15 +17,34 @@
                     <button type="submit" class="w-full bg-red-400 px-6 py-2 text-white rounded-md hover:opacity-80">
                         Daftar
                     </button>
+                    <div v-if="feedback" class="absolute text-red-500 text-center top-[92%]">
+                        {{ feedback }}
+                    </div>
                 </div>
             </div>
         </form>
     </div>
+    <div v-show="alert"
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-gray-200 w-screen h-screen text-slate-600 rounded-xl shadow-xl">
+        <div
+            class="absolute p-4 text-center text-xl font-bold mt-4 text-black top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div class="pl-20">
+                Anda sudah Login
+                <div class="mt-4">
+                    <button type="button" @click="oke()" class="bg-green-600 px-8 py-2 text-white rounded-md">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
+
 <script>
 import InputComponent from "./InputComponent.vue";
-import { register } from '../apis/auth-api';
-import { setState } from '../store';
+import { register } from "../apis/auth-api";
+import { setState } from "../store";
+import axios from "axios";
 
 export default {
     components: {
@@ -38,22 +57,60 @@ export default {
             email: "",
             password: "",
             errors: {},
+            feedback: "",
+            alert: false,
+            Token: "",
         };
+    },
+    mounted() {
+        this.load();
     },
     methods: {
         async signupForm() {
             if (!this.perusahaan || !this.username || !this.email || !this.password) {
                 this.errors = {
-                    perusahaan: "Nama perusahaan belum diisi",
+                    perusahaan: "Nama CV atau PT belum diisi",
                     username: "Username belum diisi",
                     email: "Email belum diisi",
                     password: "Password belum diisi",
                 };
             } else {
-                const { data } = await register({ perusahaan: this.perusahaan, username: this.username, email: this.email, password: this.password });
-                setState(data);
+                try {
+                    const cocoklogi = await axios.get("http://localhost:3000/users", {
+                        params: {
+                            perusahaan: this.perusahaan,
+                        },
+                    });
+                    if (cocoklogi.data.length > 0) {
+                        this.feedback = "CV atau PT sudah terdaftar";
+                    } else {
+                        const { data } = await register({
+                            perusahaan: this.perusahaan,
+                            username: this.username,
+                            email: this.email,
+                            password: this.password,
+                        });
+                        setState(data);
+                        this.$router.push("/login");
+                    }
+                } catch (error) {
+                    console.error(error);
+                    this.feedback = error.response.data;
+                }
             }
-            this.$router.push("/login")
+        },
+        load() {
+            var theres = localStorage.getItem('authState');
+            if (typeof JSON.parse(theres)?.accessToken !== 'undefined') {
+                this.Token = JSON.parse(theres).accessToken;
+                if (this.Token !== null) {
+                    this.alert = true;
+                }
+            }
+        },
+        oke() {
+            this.$router.push("/dashboard");
+            this.alert = false;
         },
     },
 };

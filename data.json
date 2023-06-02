@@ -1,49 +1,49 @@
 {
   "pegawai": [
     {
-      "nama": "Synyster",
+      "nama": "jkbkjbjkbg",
       "kelamin": "Laki-laki",
-      "umur": "52",
-      "posisi": "Head Marketing",
-      "entry": "2023-04-16",
+      "umur": "53",
+      "posisi": "Customer Service",
+      "entry": "2023-05-03",
       "lainnya": [],
       "id": 4
     },
     {
-      "nama": "Vegeance Zacky",
+      "nama": "ll",
       "kelamin": "Laki-laki",
-      "umur": "25",
-      "posisi": "Secretary",
-      "entry": "2023-04-16",
-      "lainnya": [],
+      "umur": "33",
+      "posisi": "Supervisor",
+      "entry": "2023-05-05",
+      "lainnya": [
+        "BPJS"
+      ],
+      "perusahaan": "PT. EK",
+      "id": 6
+    },
+    {
+      "nama": "dfs",
+      "kelamin": "Perempuan",
+      "umur": "23",
+      "posisi": "Head Marketing",
+      "entry": "2023-05-06",
+      "lainnya": [
+        "BPJS"
+      ],
+      "perusahaan": "PT. EK",
       "id": 7
     },
     {
-      "nama": "Layla",
-      "kelamin": "Perempuan",
-      "umur": "33",
-      "posisi": "Customer Service",
-      "entry": "2023-04-17",
-      "lainnya": [],
-      "id": 8
-    },
-    {
-      "nama": "Mia",
-      "kelamin": "Perempuan",
-      "umur": "21",
-      "posisi": "Customer Service",
-      "entry": "2023-04-21",
-      "lainnya": [],
-      "id": 9
-    },
-    {
-      "nama": "f",
+      "nama": "er",
       "kelamin": "Laki-laki",
-      "umur": "44",
+      "umur": "4",
       "posisi": "Supervisor",
-      "entry": "2023-05-19",
-      "lainnya": [],
-      "id": 10
+      "entry": "2023-06-13",
+      "lainnya": [
+        "JKP"
+      ],
+      "perusahaan": "dsdsdsd",
+      "id": 8
     }
   ],
   "users": [
@@ -60,7 +60,90 @@
       "perusahaan": "PT. EK",
       "username": "hahaha",
       "id": 2
+    },
+    {
+      "email": "sdf@gf.c",
+      "password": "$2a$10$T5i./kIdx3VHKBlYFBhtL.l.5Bz4nWv3Rtjv8UI9QG.ZYhiPIABzO",
+      "perusahaan": "PT EK",
+      "username": "ssdf",
+      "id": 3
+    },
+    {
+      "email": "dfs@hdsfs.dsf",
+      "password": "$2a$10$Yi8/ZMZEdQ0XnzzICfSI4.70VodF0AlOnrV1HOxSuvIppBfMMf.sa",
+      "perusahaan": "dsfsdf",
+      "username": "sdf",
+      "id": 4
     }
   ],
-  "login": []
+  "buangan": [
+    {
+      "form": {
+        "nama": "wrerwerwe",
+        "kelamin": "Laki-laki",
+        "umur": "42",
+        "posisi": "Supervisor",
+        "entry": "2023-06-13",
+        "lainnya": [
+          "JKP",
+          "BPJS",
+          "JHT"
+        ],
+        "perusahaan": "dsdsdsd",
+        "id": 8
+      },
+      "reason": "PHK",
+      "time": "2023-05-31",
+      "id": 2
+    },
+    {
+      "form": {
+        "nama": "dffdfdf",
+        "kelamin": "Laki-laki",
+        "umur": "44",
+        "posisi": "Head Marketing",
+        "entry": "2023-06-13",
+        "lainnya": [],
+        "perusahaan": "dsdsdsd",
+        "id": 8
+      },
+      "reason": "Resign",
+      "time": "2023-05-31",
+      "id": 3
+    },
+    {
+      "form": {
+        "nama": "sa",
+        "kelamin": "Laki-laki",
+        "umur": "33",
+        "posisi": "Secretary",
+        "entry": "2023-05-16",
+        "lainnya": [],
+        "perusahaan": "dsdsdsd",
+        "id": 9
+      },
+      "reason": "PHK",
+      "time": "2023-06-01",
+      "id": 4
+    },
+    {
+      "form": {
+        "nama": "sdf",
+        "kelamin": "Perempuan",
+        "umur": "34",
+        "posisi": "Secretary",
+        "entry": "2023-01-17",
+        "lainnya": [
+          "JKP",
+          "BPJS",
+          "JHT"
+        ],
+        "perusahaan": "dsdsdsd",
+        "id": 8
+      },
+      "reason": "Resign",
+      "time": "2023-06-02",
+      "id": 5
+    }
+  ]
 }
