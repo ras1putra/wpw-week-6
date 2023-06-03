@@ -88,6 +88,34 @@
       "perusahaan": "PT GGGG",
       "username": "gegegege",
       "id": 6
+    },
+    {
+      "email": "gudangtebu@gudangtebu.com",
+      "password": "$2a$10$evrCB9PfYRdVsCxj47Z6W.F91Reiw303hEi1x6TzbmHrgEYhF9h0i",
+      "perusahaan": "Gudang Tebu",
+      "username": "gudangtebu",
+      "id": 7
+    },
+    {
+      "email": "jkjkjkjk@jkjkjkjk.jk",
+      "password": "$2a$10$psfPqqIr9JXx7EcBhLOhGeb/PGqzaDFlWn6JW59ihykk5gVxctZii",
+      "perusahaan": "dfsfdsfsdfds",
+      "username": "jkjkjkjk",
+      "id": 8
+    },
+    {
+      "email": "gudangbakau@gudangbakau.com",
+      "password": "$2a$10$mUZeIMFrcpmKd9fzt9u7vu6AyM0fzNqfG6wDz7nWbq4PDs.nHxNjW",
+      "perusahaan": "Gudang Bakau",
+      "username": "gudangbakau",
+      "id": 9
+    },
+    {
+      "email": "gudangsagu@gudangsagu.com",
+      "password": "$2a$10$PT36.0D0tNWrQnMOx5WHs.UTgE4DoBRh33KxPE2oaZU6UFM.cACti",
+      "perusahaan": "Gudang Sagu",
+      "username": "gudangsagu",
+      "id": 10
     }
   ],
   "buangan": [
@@ -176,6 +204,68 @@
       "reason": "PHK",
       "time": "2023-06-02",
       "id": 6
+    },
+    {
+      "form": {
+        "nama": "Fdsdsf",
+        "kelamin": "Laki-laki",
+        "umur": "43",
+        "posisi": "Secretary",
+        "entry": "2023-05-29",
+        "lainnya": [],
+        "perusahaan": "PT GGGG",
+        "id": 10
+      },
+      "reason": "PHK",
+      "time": "2023-06-02",
+      "id": 7
+    },
+    {
+      "form": {
+        "nama": "Dsfsfdsdf Sdffdssdf",
+        "kelamin": "Laki-laki",
+        "umur": "33",
+        "posisi": "Supervisor",
+        "entry": "2023-06-20",
+        "lainnya": [
+          "JKP"
+        ],
+        "perusahaan": "PT GGGG",
+        "id": 9
+      },
+      "reason": "Resign",
+      "time": "2023-06-02",
+      "id": 8
+    },
+    {
+      "form": {
+        "nama": "Masriki Suhendra",
+        "kelamin": "Laki-laki",
+        "umur": "44",
+        "posisi": "Secretary",
+        "entry": "2023-06-13",
+        "lainnya": [],
+        "perusahaan": "PT GGGG",
+        "id": 9
+      },
+      "reason": "PHK",
+      "time": "2023-06-03",
+      "id": 9
+    },
+    {
+      "form": {
+        "nama": "Masriki Suhendra",
+        "kelamin": "Laki-laki",
+        "umur": "44",
+        "posisi": "Secretary",
+        "entry": "2023-06-16",
+        "lainnya": [],
+        "perusahaan": "Gudang Sagu",
+        "id": 9
+      },
+      "reason": "",
+      "time": "2023-06-03",
+      "id": 10
     }
   ]
 }

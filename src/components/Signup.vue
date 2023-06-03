@@ -43,7 +43,6 @@
 <script>
 import InputComponent from "./InputComponent.vue";
 import { register } from "../apis/auth-api";
-import { setState } from "../store";
 import axios from "axios";
 
 export default {
@@ -90,7 +89,6 @@ export default {
                             email: this.email,
                             password: this.password,
                         });
-                        setState(data);
                         this.$router.push("/login");
                     }
                 } catch (error) {

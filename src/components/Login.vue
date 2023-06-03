@@ -62,7 +62,7 @@ export default {
         if (localStorage.password) {
             this.password = localStorage.password;
         }
-        this.load()
+        this.load
     },
     watch: {
         email(newEmail) {
@@ -70,8 +70,7 @@ export default {
         },
         password(newPassword) {
             localStorage.password = newPassword;
-        },
-
+        }
     },
     methods: {
         async loginForm() {

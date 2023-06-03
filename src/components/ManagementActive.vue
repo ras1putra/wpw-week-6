@@ -32,8 +32,8 @@
                             </div>
                         </div>
                         <input-component type="text" v-model="form.umur" label="Umur" placeholder="Umur"
-                        :error="errors['umur']" maxlength="2" oninput="this.value = this.value.slice(0, 2)"></input-component>
-                      
+                            :error="errors['umur']" maxlength="2"
+                            oninput="this.value = this.value.slice(0, 2)"></input-component>
                         <select-component label="Jabatan Pekerja" v-model="form.posisi" :options="lowongan"
                             placeholder="Pilih Posisi Pekerja" :error="errors['posisi']"></select-component>
                         <input-component type="date" v-model="form.entry" label="Tanggal Masuk"
@@ -65,7 +65,8 @@
                         <div class="col-span-1">Tanggal Masuk</div>
                         <div class="col-span-2">Jaminan Pekerja</div>
                     </div>
-                    <div v-if="pegawai.length === 0" class="p-2 bg-gray-200 grid grid-cols-12 text-center items-center hover:bg-white">
+                    <div v-if="pegawai.length === 0"
+                        class="p-2 bg-gray-200 grid grid-cols-12 text-center items-center hover:bg-white">
                         <div class="col-span-12">
                             Belum ada data
                         </div>
@@ -135,7 +136,6 @@ import SelectComponent from './SelectComponent.vue'
 import RadioComponent from './RadioComponent.vue'
 import CheckboxComponent from './CheckboxComponent.vue'
 import axios from 'axios'
-import { clearState } from '../store'
 
 export default {
     components: {
@@ -235,6 +235,9 @@ export default {
                     entry: 'Tanggal masuk belum diisi'
                 }
             } else {
+                this.form.nama = this.form.nama.split(' ')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                    .join(' ');
                 axios.post("http://localhost:3000/660/pegawai/", this.form, {
                     headers: {
                         Authorization: 'Bearer ' + this.Token
@@ -270,6 +273,9 @@ export default {
             this.form.perusahaan = this.form.perusahaan
         },
         update(form) {
+            this.form.nama = this.form.nama.split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(' ');
             return axios
                 .put("http://localhost:3000/660/pegawai/" + form.id, {
                     nama: form.nama,
