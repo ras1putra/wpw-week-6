@@ -312,10 +312,9 @@ export default {
         },
         closeConfirm() {
             this.confirm = false
-            this.form.reason = ""
         },
         del(items) {
-            if (this.form.reason === "") {
+            if (this.reason === "") {
                 this.errors = {
                     reason: 'Alasan wajib diisi'
                 };
